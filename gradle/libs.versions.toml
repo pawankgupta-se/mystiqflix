@@ -10,6 +10,11 @@ coroutine = "1.6.4"
 ktor = "2.2.1"
 koin = "3.3.2"
 build-konfig = "+"
+coil = "2.2.2"
+koin-compose = "3.4.1"
+accompanist = "0.28.0"
+compose-nav = "2.5.3"
+pulltorefresh = "1.0.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -35,6 +40,20 @@ ktor-ios = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 # Koin
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-compose" }
+
+# Coil
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil"}
+
+# Accomponist
+accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist"}
+
+#Navigation
+compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-nav"}
+
+# Pull-to-refresh
+material3-pulltorefresh = {module = "eu.bambooapps:compose-material3-pullrefresh", version.ref = "pulltorefresh"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

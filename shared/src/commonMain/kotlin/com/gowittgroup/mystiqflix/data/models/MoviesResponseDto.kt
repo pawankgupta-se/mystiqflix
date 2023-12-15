@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 internal data class MoviesResponseDto(
-    val result: List<MovieDto>
+    val results: List<MovieDto>
 )

@@ -7,7 +7,7 @@ import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 
 internal class MovieService: KtorApi() {
-    suspend fun getMovies(page: Int): MoviesResponseDto = client.get {
+    suspend fun getMovies(page: Int = 1): MoviesResponseDto = client.get {
         pathUrl("movie/popular")
         parameter("page", page)
     }.body()

@@ -44,5 +44,12 @@ dependencies {
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.compose.material3)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.koin.compose)
+    implementation(libs.material3.pulltorefresh)
+    implementation(libs.coil.compose)
+    implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.compose.navigation)
+
+
     debugImplementation(libs.compose.ui.tooling)
 }
