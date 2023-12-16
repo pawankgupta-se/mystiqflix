@@ -1,5 +1,6 @@
 package com.gowittgroup.mystiqflix.android.home
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -39,7 +40,9 @@ fun MovieListItem(
     Card(
         modifier
             .height(220.dp)
-            .clickable { onClick(movie) },
+            .clickable {
+                onClick(movie)
+            },
         shape = RoundedCornerShape(8.dp)
 
     ) {
@@ -48,7 +51,8 @@ fun MovieListItem(
                 modifier = modifier.weight(1f),
                 contentAlignment = Alignment.Center
             ) {
-                AsyncImage(model = movie.imageUrl,
+                AsyncImage(
+                    model = movie.imageUrl,
                     contentDescription = movie.title,
                     contentScale = ContentScale.Crop,
                     modifier = modifier
@@ -66,7 +70,9 @@ fun MovieListItem(
                     Image(
                         imageVector = Icons.Default.PlayArrow,
                         contentDescription = "Play",
-                        modifier = modifier.padding(12.dp).align(Alignment.Center),
+                        modifier = modifier
+                            .padding(12.dp)
+                            .align(Alignment.Center),
                         colorFilter = ColorFilter.tint(color = Color.White)
                     )
 

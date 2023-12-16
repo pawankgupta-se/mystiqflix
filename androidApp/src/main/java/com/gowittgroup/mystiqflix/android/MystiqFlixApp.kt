@@ -17,11 +17,15 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.SystemUiController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.gowittgroup.mystiqflix.android.components.AppBar
+import com.gowittgroup.mystiqflix.android.desitnation.Detail
 import com.gowittgroup.mystiqflix.android.desitnation.Home
 import com.gowittgroup.mystiqflix.android.desitnation.movieDestinations
+import com.gowittgroup.mystiqflix.android.detail.DetailScreen
+import com.gowittgroup.mystiqflix.android.detail.DetailViewModel
 import com.gowittgroup.mystiqflix.android.home.HomeScreen
 import com.gowittgroup.mystiqflix.android.home.HomeViewModel
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun MystiqFlixApp() {
@@ -51,7 +55,7 @@ fun MystiqFlixApp() {
                 canNavigateBack = navController.previousBackStackEntry != null,
                 currentScreen = currentScreen
             ) {
-
+                navController.navigateUp()
             }
         }
     ) { innerPadding ->
@@ -67,7 +71,20 @@ fun MystiqFlixApp() {
 
                 HomeScreen(uiState = homeViewModel.uiState, loadNextPage = {
                     homeViewModel.loadMovies(forceReload = it)
-                }, navigateToDetail = {})
+                }, navigateToDetail = {
+                    navController.navigate("${Detail.route}/${it.id}")
+                })
+            }
+            composable(
+                Detail.routWithArgs
+            ){
+                val movieId = it.arguments?.getString("movieId") ?: "0"
+
+                val viewModel : DetailViewModel = koinViewModel(
+                    parameters = { parametersOf(movieId.toInt()) }
+                )
+                
+                DetailScreen(uiState = viewModel.uiState)
             }
         }
 
