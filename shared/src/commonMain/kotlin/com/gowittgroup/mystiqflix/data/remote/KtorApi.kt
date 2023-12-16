@@ -11,10 +11,11 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 
-private const val API_BASE_URL = "https://api.themoviedb.org"
+private const val API_BASE_URL = "https://api.themoviedb.org/"
 private val API_KEY = THE_MOVIE_DB_API_KEY
 internal abstract class KtorApi {
     val client = HttpClient{
+        // TODO: Need to install http logger 
         install(ContentNegotiation){
             json(Json{
                 ignoreUnknownKeys = true
